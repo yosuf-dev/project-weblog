@@ -1,72 +1,288 @@
-# 📝 Postify — PHP Blog & Content Management System
+<div align="center">
 
-A full-stack blog and content management system built with **Native PHP, MySQL, PDO, HTML & CSS**.
+# `</> POSTIFY`
 
-Postify is a practical PHP project designed to demonstrate the fundamentals of backend web development, database management, authentication, CRUD operations, sessions, and server-side rendering.
+### PHP BLOG · CONTENT MANAGEMENT SYSTEM
+
+**SERVER-SIDE RENDERING · AUTHENTICATION · CRUD · MYSQL · PDO**
+
+<br>
+
+[![PHP](https://img.shields.io/badge/PHP-Native-777BB4?style=for-the-badge\&logo=php\&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge\&logo=mysql\&logoColor=white)](https://www.mysql.com/)
+[![PDO](https://img.shields.io/badge/PDO-Database%20Layer-8892BF?style=for-the-badge)](https://www.php.net/manual/en/book.pdo.php)
+[![Apache](https://img.shields.io/badge/Apache-Server-D22128?style=for-the-badge\&logo=apache\&logoColor=white)](https://httpd.apache.org/)
+
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square\&logo=github)](https://github.com/yosuf-dev/project-weblog)
+
+</div>
 
 ---
 
-## 🚀 Features
+# `01` PROJECT
 
-### 🌐 Public Website
+**Postify** is a full-stack blog and content management system built with **Native PHP, MySQL, PDO, HTML5 and CSS3**.
 
-* Modern blog homepage
-* Display published posts
-* Category-based post filtering
-* Single post detail page
-* Dynamic content loaded from MySQL
+The project focuses on understanding how a server-rendered PHP application works from request to database and back to the browser.
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                         POSTIFY                             │
+│                                                             │
+│  Public Blog                                               │
+│       │                                                     │
+│       ├── Posts                                             │
+│       ├── Categories                                        │
+│       └── Post Details                                      │
+│                                                             │
+│  Authentication                                             │
+│       │                                                     │
+│       ├── Register                                          │
+│       ├── Login                                             │
+│       └── Sessions                                          │
+│                                                             │
+│  Administration                                             │
+│       │                                                     │
+│       ├── Posts CRUD                                        │
+│       ├── Categories CRUD                                   │
+│       └── Post Status                                       │
+│                                                             │
+│                         ↓                                   │
+│                       PDO                                   │
+│                         ↓                                   │
+│                    MySQL Database                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+> A practical backend project focused on PHP fundamentals, database architecture, authentication and content management.
+
+---
+
+# `02` CORE FEATURES
+
+## 🌐 Public Blog
+
+```text
+Homepage
+   │
+   ├── Published Posts
+   ├── Categories
+   ├── Category Filtering
+   └── Post Details
+```
+
+* Dynamic blog homepage
+* Published post listing
+* Category-based filtering
+* Individual post pages
+* Dynamic MySQL content
 * Server-side rendering with PHP
 
-### 🔐 Authentication
+---
+
+## 🔐 Authentication
+
+```text
+REGISTER
+   ↓
+VALIDATION
+   ↓
+PASSWORD HASH
+   ↓
+LOGIN
+   ↓
+PASSWORD VERIFY
+   ↓
+SESSION
+   ↓
+AUTHENTICATED ACCESS
+```
+
+Implemented concepts:
 
 * User registration
 * User login
 * Session-based authentication
-* Secure password hashing with `password_hash()`
-* Password verification with `password_verify()`
+* Password hashing
+* Password verification
 * Duplicate email detection
 * Password confirmation validation
 
-### 🛠️ Admin Panel
+---
 
-* Dashboard
-* Post management
+## 🛠️ Admin CMS
+
+```text
+                 ADMIN PANEL
+                      │
+          ┌───────────┴───────────┐
+          ↓                       ↓
+        POSTS                CATEGORIES
+          │                       │
+     ┌────┼────┐             ┌────┼────┐
+     ↓    ↓    ↓             ↓    ↓    ↓
+   CREATE READ UPDATE       CREATE READ UPDATE
+     │         │               │         │
+     └──── DELETE              └──── DELETE
+```
+
+### Post Management
+
 * Create posts
+* Read posts
 * Edit posts
 * Delete posts
-* Change post status
-* Category management
+* Change publication status
+
+### Category Management
+
 * Create categories
+* Read categories
 * Edit categories
 * Delete categories
-* Authentication-protected administration area
-
-### 🗄️ Database
-
-* MySQL database
-* PDO database connection
-* Prepared statements
-* Dynamic relationships between posts and categories
-* Exception-based database error handling
 
 ---
 
-## 🧰 Tech Stack
+# `03` BACKEND ARCHITECTURE
 
-| Technology | Usage                         |
-| ---------- | ----------------------------- |
-| PHP        | Backend & server-side logic   |
-| MySQL      | Database                      |
-| PDO        | Database communication        |
-| HTML5      | Page structure                |
-| CSS3       | Styling                       |
-| Sessions   | Authentication                |
-| Apache     | Local web server              |
-| XAMPP      | Local development environment |
+Postify follows a simple server-rendered architecture:
+
+```text
+┌──────────────┐
+│    Browser   │
+└──────┬───────┘
+       │ HTTP Request
+       ▼
+┌──────────────┐
+│     PHP      │
+│ Application  │
+└──────┬───────┘
+       │
+       ├───────────────┐
+       ↓               ↓
+┌──────────────┐ ┌──────────────┐
+│ Application  │ │    Session   │
+│    Logic     │ │    State     │
+└──────┬───────┘ └──────────────┘
+       │
+       ↓
+┌──────────────┐
+│     PDO      │
+└──────┬───────┘
+       │ SQL
+       ▼
+┌──────────────┐
+│    MySQL     │
+│ php_project  │
+└──────────────┘
+```
+
+The application uses PHP to process requests, PDO to communicate with MySQL, and server-side rendering to generate the final HTML response.
 
 ---
 
-## 📁 Project Structure
+# `04` TECHNOLOGY STACK
+
+| Technology   | Role                                    |
+| ------------ | --------------------------------------- |
+| **PHP**      | Backend & server-side application logic |
+| **MySQL**    | Relational database                     |
+| **PDO**      | Database communication                  |
+| **SQL**      | Data querying & manipulation            |
+| **HTML5**    | Server-rendered page structure          |
+| **CSS3**     | Interface styling                       |
+| **Sessions** | Authentication state                    |
+| **Apache**   | Local web server                        |
+| **XAMPP**    | Development environment                 |
+
+---
+
+# `05` DATABASE ARCHITECTURE
+
+The application uses a MySQL database named:
+
+```text
+php_project
+```
+
+Core entities:
+
+```text
+┌──────────────┐
+│    users     │
+└──────┬───────┘
+       │
+       │ authentication
+       │
+       ▼
+┌──────────────────────────────┐
+│       Admin Access           │
+└──────────────────────────────┘
+
+
+┌──────────────┐
+│  categories  │
+└──────┬───────┘
+       │
+       │ category relationship
+       ▼
+┌──────────────┐
+│    posts     │
+└──────────────┘
+```
+
+### Main Tables
+
+```text
+users
+categories
+posts
+```
+
+Posts are associated with categories, allowing the public website to filter and organize content dynamically.
+
+---
+
+# `06` SECURITY
+
+Security fundamentals are an important part of the project.
+
+## Password Hashing
+
+Passwords are never intended to be stored as plain text.
+
+```php
+password_hash($password, PASSWORD_DEFAULT);
+```
+
+## Password Verification
+
+```php
+password_verify(
+    $password,
+    $hashedPassword
+);
+```
+
+## Prepared Statements
+
+Database queries use PDO prepared statements when processing user-controlled values.
+
+```php
+$stmt = $pdo->prepare(
+    "SELECT * FROM users WHERE email = ?"
+);
+
+$stmt->execute([$email]);
+```
+
+This helps reduce the risk of SQL injection.
+
+---
+
+# `07` PROJECT STRUCTURE
 
 ```text
 project-weblog/
@@ -102,127 +318,226 @@ project-weblog/
 └── README.md
 ```
 
+### Architecture Overview
+
+```text
+PUBLIC
+├── index.php
+├── category.php
+└── detail.php
+
+AUTH
+├── login.php
+└── register.php
+
+ADMIN
+├── Posts
+├── Categories
+└── Layouts
+
+DATABASE
+└── PDO Connection
+```
+
 ---
 
-# ⚙️ Installation & Setup
+# `08` APPLICATION FLOW
 
-## 1. Install XAMPP
+### Public Request
 
-Download and install XAMPP with:
+```text
+USER
+ │
+ ▼
+index.php
+ │
+ ▼
+PHP
+ │
+ ▼
+PDO
+ │
+ ▼
+MySQL
+ │
+ ▼
+Published Posts
+ │
+ ▼
+HTML Response
+ │
+ ▼
+BROWSER
+```
 
-* Apache
-* MySQL
-* PHP
-* phpMyAdmin
+### Authentication Flow
 
-Then start:
+```text
+REGISTER
+   ↓
+VALIDATE INPUT
+   ↓
+HASH PASSWORD
+   ↓
+STORE USER
+   ↓
+LOGIN
+   ↓
+VERIFY PASSWORD
+   ↓
+CREATE SESSION
+   ↓
+AUTHORIZED AREA
+```
+
+### Admin Flow
+
+```text
+ADMIN LOGIN
+     ↓
+SESSION CHECK
+     ↓
+ADMIN PANEL
+     │
+     ├── POST CRUD
+     │
+     └── CATEGORY CRUD
+              ↓
+            MYSQL
+```
+
+---
+
+# `09` CRUD SYSTEM
+
+One of the main purposes of Postify is practicing the complete CRUD lifecycle.
+
+```text
+                    CRUD
+                     │
+       ┌─────────────┼─────────────┐
+       ↓             ↓             ↓
+     CREATE         READ          UPDATE
+       │             │             │
+       └─────────────┼─────────────┘
+                     ↓
+                   DELETE
+```
+
+### Posts
+
+```text
+CREATE
+READ
+UPDATE
+DELETE
+CHANGE STATUS
+```
+
+### Categories
+
+```text
+CREATE
+READ
+UPDATE
+DELETE
+```
+
+This provides the foundation of a basic **Content Management System**.
+
+---
+
+# `10` LOCAL DEVELOPMENT
+
+Postify is currently designed primarily for local development using **XAMPP**.
+
+### Requirements
+
+```text
+PHP
+MySQL
+Apache
+phpMyAdmin
+XAMPP
+```
+
+### Local Environment
+
+```text
+C:\xampp\htdocs\project-weblog
+```
+
+### Database
+
+```text
+php_project
+```
+
+### Database Connection
+
+```text
+Host      → localhost
+Database  → php_project
+Username  → root
+Password  → empty
+```
+
+> These credentials are intended for local XAMPP development and should not be used as-is in production.
+
+---
+
+# `11` RUN LOCALLY
+
+### Clone
+
+```bash
+git clone https://github.com/yosuf-dev/project-weblog.git
+```
+
+### Move into XAMPP
+
+```text
+C:\xampp\htdocs\project-weblog
+```
+
+### Start Services
 
 ```text
 Apache
 MySQL
 ```
 
----
+### Create Database
 
-## 2. Clone the Repository
-
-```bash
-git clone https://github.com/yosuf-dev/project-weblog.git
-```
-
-Move the project into:
-
-```text
-C:\xampp\htdocs\
-```
-
-The final path should look like:
-
-```text
-C:\xampp\htdocs\project-weblog
-```
-
----
-
-## 3. Create the Database
-
-Open phpMyAdmin:
+Open:
 
 ```text
 http://localhost/phpmyadmin
 ```
 
-Create a database named:
+Create:
 
 ```text
 php_project
 ```
 
-The project uses tables for:
-
-```text
-users
-posts
-categories
-```
-
-> Make sure your database structure matches the SQL schema required by the project.
-
----
-
-## 4. Configure Database Connection
-
-The database connection is located at:
-
-```text
-functions/pdo_connection.php
-```
-
-Default local configuration:
-
-```text
-Host: localhost
-Database: php_project
-Username: root
-Password: empty
-```
-
-For example:
-
-```php
-$host = 'localhost';
-$dbname = 'php_project';
-$username = 'root';
-$password = '';
-```
-
-> ⚠️ These credentials are intended for local XAMPP development only. Never use default `root` credentials in a production environment.
-
----
-
-# ▶️ Running the Project
-
-After starting Apache and MySQL, open:
-
-### Public Website
+### Open Application
 
 ```text
 http://localhost/project-weblog/
 ```
 
-### Login
+### Authentication
 
 ```text
 http://localhost/project-weblog/auth/login.php
 ```
 
-### Register
-
 ```text
 http://localhost/project-weblog/auth/register.php
 ```
 
-### Admin Panel
+### Administration
 
 ```text
 http://localhost/project-weblog/admin/
@@ -230,271 +545,204 @@ http://localhost/project-weblog/admin/
 
 ---
 
-# 🔄 Application Flow
+# `12` ENGINEERING CONCEPTS
+
+This project was built around several fundamental backend concepts:
 
 ```text
-                 ┌─────────────────┐
-                 │     Browser     │
-                 └────────┬────────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │   PHP Website   │
-                 └────────┬────────┘
-                          │
-                 ┌────────▼────────┐
-                 │       PDO       │
-                 └────────┬────────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │      MySQL      │
-                 │   php_project   │
-                 └─────────────────┘
+PHP
+ │
+ ├── Server-Side Rendering
+ ├── Forms
+ ├── Sessions
+ ├── Authentication
+ └── Application Logic
+       │
+       ▼
+     PDO
+       │
+       ├── Prepared Statements
+       ├── Queries
+       └── Exceptions
+       │
+       ▼
+     MySQL
+       │
+       ├── Users
+       ├── Categories
+       └── Posts
 ```
+
+The goal is not only to make pages work, but to understand how the different layers of a backend application communicate.
 
 ---
 
-# 🧩 Main Modules
+# `13` WHAT I LEARNED
 
-## Public Website
-
-The public section allows visitors to:
-
-* View blog posts
-* Browse categories
-* Open individual posts
-* Read published content
-
-The homepage retrieves published posts directly from the MySQL database.
-
----
-
-## Authentication
-
-The authentication system provides:
-
-```text
-Register
-   ↓
-Password Hashing
-   ↓
-Login
-   ↓
-password_verify()
-   ↓
-Session
-   ↓
-Admin Access
-```
-
-Passwords are not stored as plain text.
-
-The project uses PHP's built-in password hashing functions:
-
-```php
-password_hash()
-```
-
-and:
-
-```php
-password_verify()
-```
-
----
-
-## Admin Panel
-
-The admin panel provides CRUD functionality for:
-
-### Posts
-
-```text
-Create
-Read
-Update
-Delete
-Change Status
-```
-
-### Categories
-
-```text
-Create
-Read
-Update
-Delete
-```
-
-This makes the project a practical example of a basic **Content Management System (CMS)**.
-
----
-
-# 🗃️ Database
-
-The main database is:
-
-```text
-php_project
-```
-
-Main entities include:
-
-```text
-users
-categories
-posts
-```
-
-Conceptually:
-
-```text
-users
-  │
-  └── Authentication
-
-categories
-  │
-  └── posts
-        │
-        └── Blog Content
-```
-
-Posts are associated with categories so that content can be organized and filtered dynamically.
-
----
-
-# 🔒 Security Concepts
-
-This project demonstrates several important backend security concepts.
-
-### Password Hashing
-
-Passwords should never be stored directly.
-
-```php
-password_hash($password, PASSWORD_DEFAULT);
-```
-
-### Password Verification
-
-```php
-password_verify($password, $hashedPassword);
-```
-
-### Prepared Statements
-
-PDO prepared statements should be used when working with user input:
-
-```php
-$stmt = $pdo->prepare(
-    "SELECT * FROM users WHERE email = ?"
-);
-
-$stmt->execute([$email]);
-```
-
-This helps reduce SQL injection risks.
-
----
-
-# ⚠️ Production Security Improvements
-
-This project is primarily intended for learning and local development.
-
-Before deploying a real production application, additional security measures should be implemented, including:
-
-* CSRF protection
-* Strong authorization checks
-* Secure session configuration
-* Input validation
-* Output escaping
-* Secure file upload validation
-* Environment variables for credentials
-* Better error handling
-* HTTPS
-* Rate limiting
-* Account protection
-* Database user with limited privileges
-
----
-
-# 📚 What I Learned
-
-This project helped practice important PHP backend concepts:
+Building Postify strengthened my understanding of:
 
 * PHP fundamentals
+* Server-side rendering
 * MySQL
-* PDO
 * SQL queries
-* CRUD
+* PDO
+* CRUD architecture
 * Authentication
 * Sessions
 * Password hashing
-* Form handling
-* Server-side rendering
+* Form processing
 * Database relationships
-* Admin panel architecture
-* Backend project structure
+* Admin panel structure
+* Backend project organization
 
-It is also a practical foundation for moving toward more advanced PHP development and frameworks such as Laravel.
-
----
-
-# 📈 Future Improvements
-
-Possible future improvements include:
-
-* [ ] CSRF protection
-* [ ] Role-based authorization
-* [ ] Better admin dashboard
-* [ ] Image upload system
-* [ ] Post editor
-* [ ] Pagination
-* [ ] Search system
-* [ ] User profile management
-* [ ] Comments
-* [ ] Tags
-* [ ] REST API
-* [ ] Laravel version
-* [ ] Responsive UI improvements
-* [ ] Production deployment
+It also provides a foundation for moving from **Native PHP** toward larger backend architectures and frameworks such as **Laravel**.
 
 ---
 
-# 🎯 Project Status
+# `14` PRODUCTION ROADMAP
 
-**Status:** 🟢 Active Learning Project
+The current implementation is primarily a learning project.
 
-This project was created as part of my journey into **PHP backend and full-stack web development**.
+Before treating the application as a production CMS, the following areas can be improved:
 
-The goal is to understand how a real-world PHP application communicates with a database and handles authentication, content management, and dynamic pages.
+```text
+CURRENT
+   │
+   ▼
+Authentication
+   │
+   ▼
+Authorization
+   │
+   ▼
+CSRF Protection
+   │
+   ▼
+Input Validation
+   │
+   ▼
+Output Escaping
+   │
+   ▼
+Secure Sessions
+   │
+   ▼
+Environment Variables
+   │
+   ▼
+HTTPS
+   │
+   ▼
+Rate Limiting
+   │
+   ▼
+Production Deployment
+```
 
 ---
 
-# 👨‍💻 Author
+# `15` ROADMAP
 
-## Yosuf Saleh Zadeh
-
-**Full-Stack Developer**
-
-GitHub:
-
-https://github.com/yosuf-dev
-
-Project:
-
-https://github.com/yosuf-dev/project-weblog
+```text
+[ ] CSRF Protection
+[ ] Role-Based Authorization
+[ ] Improved Admin Dashboard
+[ ] Image Upload System
+[ ] Rich Post Editor
+[ ] Pagination
+[ ] Search
+[ ] User Profiles
+[ ] Comments
+[ ] Tags
+[ ] REST API
+[ ] Responsive UI Improvements
+[ ] Production Deployment
+[ ] Laravel Version
+```
 
 ---
 
-# ⭐ Support
+# `16` DEVELOPMENT MINDSET
 
-If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+```text
+UNDERSTAND
+     ↓
+DESIGN
+     ↓
+IMPLEMENT
+     ↓
+TEST
+     ↓
+SECURE
+     ↓
+REFACTOR
+     ↓
+DEPLOY
+```
+
+> **The goal is not just to learn PHP syntax.
+> The goal is to understand backend engineering.**
 
 ---
 
-## 📄 License
+# `17` PROJECT STATUS
 
-This project is available for educational and personal learning purposes.
+```text
+STATUS      → ACTIVE LEARNING PROJECT
+TYPE        → PHP CMS
+BACKEND     → NATIVE PHP
+DATABASE    → MYSQL
+ARCHITECTURE → SERVER-SIDE RENDERED
+```
+
+Postify represents a practical step in my journey toward **Full-Stack Web Development**, with a focus on understanding backend fundamentals before moving into larger frameworks and architectures.
+
+---
+
+# `18` DEVELOPER
+
+<div align="center">
+
+## `</> YOSUF`
+
+### FULL-STACK WEB DEVELOPER
+
+**Frontend Engineering · Backend Development · Database Design**
+
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-yosuf--dev-181717?style=for-the-badge\&logo=github)](https://github.com/yosuf-dev)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yosuf%20Saleh%20Zadeh-0A66C2?style=for-the-badge\&logo=linkedin\&logoColor=white)](https://www.linkedin.com/in/yosuf-saleh-zadeh-2a0b34421/)
+
+</div>
+
+---
+
+# `19` PROJECT
+
+<div align="center">
+
+### POSTIFY
+
+**PHP · MySQL · PDO · CMS**
+
+<br>
+
+[![Repository](https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge\&logo=github\&logoColor=white)](https://github.com/yosuf-dev/project-weblog)
+
+</div>
+
+---
+
+<div align="center">
+
+### `</> BUILD · LEARN · REFACTOR · SHIP`
+
+<br>
+
+**Yosuf Saleh Zadeh**
+
+*Full-Stack Web Developer*
+
+</div>
